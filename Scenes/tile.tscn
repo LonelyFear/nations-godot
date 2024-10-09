@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://wfrb4pgdmgk5"]
+
+[ext_resource type="Texture2D" uid="uid://deme24v63a6o2" path="res://Sprites/Tile.png" id="1_lj6h2"]
+[ext_resource type="Script" path="res://Scripts/Classes/tile.gd" id="1_w5skc"]
+[ext_resource type="Texture2D" uid="uid://q0j8ll0o1drv" path="res://Sprites/Capital.png" id="3_iaqg5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iu5al"]
+size = Vector2(8, 8)
+
+[node name="Tile" type="Area2D" node_paths=PackedStringArray("tileSprite")]
+script = ExtResource("1_w5skc")
+tileSprite = NodePath("TileSprite")
+
+[node name="TileSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_lj6h2")
+
+[node name="TileCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iu5al")
+
+[node name="CapitalOverlay" type="Sprite2D" parent="."]
+texture = ExtResource("3_iaqg5")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

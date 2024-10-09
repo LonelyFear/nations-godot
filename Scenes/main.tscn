@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfqf2tnpxwxsy"]
+
+[ext_resource type="Script" path="res://Scenes/worldgen.gd" id="1_ptybk"]
+[ext_resource type="Script" path="res://Scripts/time_system.gd" id="2_gmsby"]
+[ext_resource type="Script" path="res://Scripts/fps_counter.gd" id="3_nrq1u"]
+[ext_resource type="Script" path="res://Scripts/nation_info_panel.gd" id="4_32mcu"]
+[ext_resource type="Script" path="res://Scripts/date.gd" id="5_jdtjf"]
+
+[node name="Main" type="Node2D"]
+
+[node name="AllTiles" type="Node2D" parent="."]
+script = ExtResource("1_ptybk")
+
+[node name="TimeSystem" type="Node" parent="."]
+script = ExtResource("2_gmsby")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="FPS Counter" type="Label" parent="UILayer"]
+offset_right = 83.0
+offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "FPS"
+script = ExtResource("3_nrq1u")
+
+[node name="NationInfo" type="Panel" parent="UILayer"]
+offset_left = 12.0
+offset_top = 445.0
+offset_right = 316.0
+offset_bottom = 632.0
+script = ExtResource("4_32mcu")
+
+[node name="NationName" type="Label" parent="UILayer/NationInfo"]
+layout_mode = 2
+offset_right = 161.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "Nation Name"
+
+[node name="NationPop" type="Label" parent="UILayer/NationInfo"]
+layout_mode = 2
+offset_top = 27.0
+offset_right = 113.0
+offset_bottom = 49.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = "Population: 100000000"
+
+[node name="NationTech" type="Label" parent="UILayer/NationInfo"]
+layout_mode = 2
+offset_left = 210.0
+offset_top = 27.0
+offset_right = 382.0
+offset_bottom = 49.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = "Tech: 100"
+
+[node name="NationManpower" type="Label" parent="UILayer/NationInfo"]
+layout_mode = 2
+offset_top = 47.0
+offset_right = 95.0
+offset_bottom = 69.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = "Manpower: 5"
+
+[node name="NationTroops" type="Label" parent="UILayer/NationInfo"]
+layout_mode = 2
+offset_top = 67.0
+offset_right = 95.0
+offset_bottom = 89.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = "Soldiers : 1"
+
+[node name="NationSize" type="Label" parent="UILayer/NationInfo"]
+layout_mode = 2
+offset_top = 87.0
+offset_right = 99.0
+offset_bottom = 109.0
+theme_override_font_sizes/font_size = 15
+text = "Size: 100 Tiles"
+
+[node name="NationEnemies" type="Label" parent="UILayer/NationInfo"]
+layout_mode = 2
+offset_top = 109.0
+offset_right = 304.0
+offset_bottom = 187.0
+theme_override_font_sizes/font_size = 15
+text = "Enemies: None"
+autowrap_mode = 3
+
+[node name="Date" type="Label" parent="UILayer"]
+offset_left = 987.0
+offset_right = 1147.0
+offset_bottom = 42.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 30
+text = "00/00/0000"
+script = ExtResource("5_jdtjf")
+
+[connection signal="gui_input" from="UILayer/NationInfo" to="UILayer/NationInfo" method="_on_gui_input"]
+[connection signal="mouse_entered" from="UILayer/NationInfo" to="UILayer/NationInfo" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="UILayer/NationInfo" to="UILayer/NationInfo" method="_on_mouse_exited"]
